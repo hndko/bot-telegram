@@ -39,6 +39,11 @@ bot.on("callback_query", async (query) => {
   const chatId = query.message.chat.id;
   const data = query.data;
 
+  await bot.sendMessage(
+    chatId,
+    "⏳ Mohon tunggu sebentar, kami sedang memuat informasi bot..."
+  );
+
   if (data === "weather") {
     try {
       const res = await axios.get(
@@ -53,11 +58,6 @@ bot.on("callback_query", async (query) => {
       await bot.sendMessage(chatId, "❌ Gagal mengambil data cuaca.");
     }
   } else if (data === "info") {
-    await bot.sendMessage(
-      chatId,
-      "⏳ Mohon tunggu sebentar, kami sedang memuat informasi bot..."
-    );
-
     const infoMessage = `
   <b>🤖 Tentang Mari Partner Bot</b>
 

@@ -22,8 +22,8 @@ Bot Telegram modern berbasis Node.js (ESM) dengan fitur tombol menu interaktif, 
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/maripartner/telegram-bot.git
-cd telegram-bot
+git clone https://github.com/hndko/bot-telegram
+cd bot-telegram
 ```
 
 ### 2. Install Dependencies
@@ -44,6 +44,8 @@ export const ADMINS = ["123456789"]; // ID Admin
 
 ```bash
 npm run dev
+or
+node bot.js
 ```
 
 > Jika belum ada, tambahkan ke `package.json`:
@@ -82,8 +84,8 @@ npm run dev
 
 Punya ide bot lain atau ingin request fitur?
 
-📬 Email: **support@maripartner.com**
-🌐 GitHub: [github.com/maripartner](https://github.com/maripartner)
+📬 Email: **maripartner13@gmail.com** <br>
+🌐 GitHub: [github.com/hndko](https://github.com/hndko)
 
 ---
 
