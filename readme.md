@@ -1,94 +1,109 @@
-# 🤖 Mari Partner Telegram Bot
+# Anime Picture & Prayer Time Bot 🤖🕌
 
-Bot Telegram modern berbasis Node.js (ESM) dengan fitur tombol menu interaktif, auto-reply, akses API publik cuaca, dan sistem user level. Cocok untuk pengembangan bot lanjut seperti layanan informasi, admin panel, dan lainnya.
+A Telegram bot that provides random anime pictures and prayer time schedules for various cities in Indonesia.
 
----
+## Features ✨
 
-## ✨ Fitur Utama
+- 🎴 Get random anime pictures
+- 🕌 Check prayer times for multiple cities
+- 🔍 Search prayer times by city name
+- 📅 Daily prayer schedules
+- 🖼️ Interactive menu system
 
-- ✅ `/start` menyapa pengguna & menampilkan menu
-- ✅ Tombol menu interaktif dengan `inline_keyboard`
-- ✅ Menampilkan data cuaca real-time via [Open Meteo API](https://open-meteo.com/)
-- ✅ Info bot & kontak developer
-- ✅ Auto reply berdasarkan kata kunci
-- ✅ Simpan data user yang pernah start ke database JSON
-- ✅ Struktur modular & ESM modern
-- ✅ Siap dikembangkan untuk fitur lanjutan (admin panel, broadcast, dll)
+## Prerequisites 📋
 
----
+- Node.js (v14 or higher)
+- npm or yarn
+- Telegram Bot Token from [@BotFather](https://t.me/BotFather)
 
-## 📦 Instalasi
+## Installation ⚙️
 
-### 1. Clone Repository
+1. Clone this repository:
 
 ```bash
 git clone https://github.com/hndko/bot-telegram
 cd bot-telegram
 ```
 
-### 2. Install Dependencies
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-### 3. Buat File `config.js`
+3. Create a `.env` file and add your credentials:
 
-```js
-// config.js
-export const TOKEN = "YOUR_TELEGRAM_BOT_TOKEN";
-export const ADMINS = ["123456789"]; // ID Admin
+```env
+BOT_TOKEN=your_telegram_bot_token
+TITANZ_API_KEY=your_titanz_api_key
 ```
 
-### 4. Jalankan Bot
+## Configuration ⚙️
+
+Edit `config/config.js` to modify:
+
+- API endpoints
+- Default settings
+- Available cities for prayer times
+
+## Available Commands 💻
+
+- `/start` - Start the bot
+- `/menu` - Show main menu
+- `/sholat [city]` - Get prayer times for a city (default: Jakarta)
+
+## Keyboard Menu 🎹
+
+Main menu provides quick access to:
+
+- Random anime pictures
+- Prayer time menu
+- Bot information
+
+## How It Works 🤔
+
+1. Users interact with the bot through commands or inline buttons
+2. For prayer times:
+   - Select from predefined cities or
+   - Search for any city by name
+3. For anime pictures:
+   - Get random images with one click
+
+## Error Handling ⚠️
+
+The bot handles:
+
+- Invalid city names
+- API timeouts
+- Network errors
+- Unexpected input
+
+## Deployment 🚀
+
+To run the bot:
 
 ```bash
-npm run dev
+npm start
 or
-node bot.js
+node app.js
+or
+nodemon app.js
 ```
 
-> Jika belum ada, tambahkan ke `package.json`:
+For production, consider using:
 
-```json
-"scripts": {
-  "dev": "nodemon bot.js"
-}
-```
+- PM2 process manager
+- Docker container
+- Serverless platform
+
+## Contributing 🤝
+
+Pull requests are welcome! For major changes, please open an issue first.
+
+## License 📄
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ---
 
-## 🔧 Struktur Folder
-
-```
-📁 bot-telegram/
-├── bot.js                # Entry point utama
-├── config.js             # Token & Admin list
-├── database.json         # Penyimpanan user lokal
-├── features/
-│   ├── helper.js         # Simpan user
-│   └── keywords.js       # Auto reply text
-├── nodemon.json          # Hot reload config
-└── README.md             # Dokumentasi ini
-```
-
----
-
-## 📡 API yang Digunakan
-
-- [Open-Meteo](https://open-meteo.com/) untuk cuaca real-time (tanpa API key)
-
----
-
-## 🤝 Request Fitur & Kontribusi
-
-Punya ide bot lain atau ingin request fitur?
-
-📬 Email: **maripartner13@gmail.com** <br>
-🌐 GitHub: [github.com/hndko](https://github.com/hndko)
-
----
-
-## 📜 Lisensi
-
-MIT License © 2025 Mari Partner
+**Enjoy using the bot!** For any questions, please contact the maintainer.

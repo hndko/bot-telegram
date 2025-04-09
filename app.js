@@ -8,10 +8,27 @@ const LocalSession = require("telegraf-session-local");
 
 const bot = new Telegraf(BOT_TOKEN);
 
-// Add session middleware
-const localSession = new LocalSession({ database: "session_db.json" });
+// Initialize session properly
+const localSession = new LocalSession({
+  database: "session_db.json", // File to store sessions
+  property: "session", // Property name to use in ctx
+  storage: LocalSession.storageFileAsync, // Storage method
+  format: {
+    serialize: (obj) => JSON.stringify(obj, null, 2),
+    deserialize: (str) => JSON.parse(str),
+  },
+});
+
+// Apply session middleware
 bot.use(localSession.middleware());
-bot.use(session());
+
+// Add this to ensure session is properly initialized
+bot.use((ctx, next) => {
+  if (!ctx.session) {
+    ctx.session = {};
+  }
+  return next();
+});
 
 // Log when bot is successfully started
 bot
@@ -70,7 +87,7 @@ bot.command("sholat", async (ctx) => {
 
 // Action handlers
 bot.action("random_picture", AnimeController.sendRandomAnimeImage);
-bot.action("jadwal_sholat", SholatController.sendJadwalSholat);
+// bot.action("jadwal_sholat", SholatController.sendJadwalSholat);
 bot.action("sholat_menu", SholatController.showSholatMenu);
 bot.action("sholat_cari", SholatController.handleSholatInput);
 bot.action(/^sholat_kota:(.+)$/, SholatController.sendJadwalSholat);
@@ -87,10 +104,15 @@ bot.action("main_menu", async (ctx) => {
 });
 
 bot.on("text", async (ctx) => {
-  if (ctx.session.waitingForSholatInput) {
+  // Check if we're expecting city input
+  if (ctx.session?.waitingForSholatInput) {
     return SholatController.sendJadwalSholat(ctx);
   }
-  return ctx.reply("Gunakan menu atau perintah yang tersedia");
+
+  // Ignore other text messages or provide help
+  if (!ctx.message.text.startsWith("/")) {
+    await ctx.reply("Gunakan menu atau perintah yang tersedia");
+  }
 });
 
 // Error handling
