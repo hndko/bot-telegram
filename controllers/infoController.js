@@ -6,19 +6,19 @@ class InfoController {
     await ctx.replyWithChatAction("typing");
 
     const botInfo = `
-🤖 *Anime Picture Bot*
+  🤖 *Mari Partner Bot*
 
-This bot provides random anime pictures from the Nekos API.
+  This bot is designed for learning how to create Telegram bots using Node.js.
 
-*Commands:*
-- /start - Start the bot
-- /menu - Show main menu
+  *Commands:*
+  - /start - Start the bot
+  - /menu - Show main menu
 
-*Features:*
-- Get random anime pictures
-- Simple and intuitive interface
+  *Features:*
+  - Learn how to build Telegram bots
+  - Simple and intuitive interface
 
-*Developer:* You can add your info here
+  *Developer:* hndko
     `;
 
     await ctx.replyWithMarkdown(botInfo, backButton);

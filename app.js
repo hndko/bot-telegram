@@ -50,7 +50,7 @@ bot.start(async (ctx) => {
     `🚀 /start command received from ${ctx.from.username || ctx.from.id}`
   );
   await ctx.replyWithMarkdown(
-    "🎴 *Welcome to Anime Picture Bot!*\n\nGet random anime pictures with a single tap!",
+    "🤖 Mari Partner Bot \n\n This bot is designed for learning how to create Telegram bots using Node.js.",
     mainMenu
   );
 });
